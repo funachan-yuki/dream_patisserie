@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
         } catch (err) {
             console.error(err);
-            setError("シェフが現在多忙です。別のリクエストをお試しください。");
+            setError("申し訳ありません。現在シェフが多忙のようです。少し時間を置いて再度お試しください。");
             setLoadingState(LoadingState.ERROR);
         }
     };
@@ -53,7 +53,7 @@ const App: React.FC = () => {
                         L'ATELIER <span className="text-patisserie-gold">IA</span>
                     </h1>
                     <p className="font-serif text-patisserie-gold/80 italic text-lg tracking-wide">
-                        AIによる最高級スイーツ・コンセプト生成
+                        AIパティシエが贈る、至高のスイーツ提案
                     </p>
                 </header>
 
@@ -67,15 +67,15 @@ const App: React.FC = () => {
                     {/* Status Messages */}
                     {loadingState === LoadingState.GENERATING_RECIPE && (
                         <div className="text-center animate-pulse mt-8">
-                            <p className="font-display text-xl text-patisserie-gold">構想を練っています...</p>
-                            <p className="font-serif text-sm text-patisserie-cream/60">フレーバーの構成と建築的な構造を設計中</p>
+                            <p className="font-display text-xl text-patisserie-gold">アイデアを練っています...</p>
+                            <p className="font-serif text-sm text-patisserie-cream/60">フレーバーの組み合わせと構成を設計中</p>
                         </div>
                     )}
 
                     {loadingState === LoadingState.GENERATING_IMAGE && (
                         <div className="text-center animate-pulse mt-8">
-                            <p className="font-display text-xl text-patisserie-gold">仕上げを行っています...</p>
-                            <p className="font-serif text-sm text-patisserie-cream/60">シェフが最後の盛り付けを行っています</p>
+                            <p className="font-display text-xl text-patisserie-gold">仕上げの盛り付け中...</p>
+                            <p className="font-serif text-sm text-patisserie-cream/60">光と影を調整し、美しいビジュアルを生成しています</p>
                         </div>
                     )}
 

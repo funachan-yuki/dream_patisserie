@@ -21,12 +21,15 @@ export const Showcase: React.FC<ShowcaseProps> = ({ data }) => {
                         />
                     ) : (
                         <div className="w-full h-full bg-patisserie-charcoal flex items-center justify-center">
-                            <span className="text-patisserie-gold animate-pulse font-display">盛り付け中...</span>
+                            <div className="text-center">
+                                <div className="loader ease-linear rounded-full border-2 border-t-2 border-patisserie-gold h-8 w-8 mx-auto mb-4"></div>
+                                <span className="text-patisserie-gold animate-pulse font-display text-sm tracking-widest">お皿に盛り付け中...</span>
+                            </div>
                         </div>
                     )}
                     
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
-                        <h2 className="text-4xl md:text-5xl font-display text-white mb-2 drop-shadow-lg">
+                        <h2 className="text-3xl md:text-5xl font-display text-white mb-2 drop-shadow-lg leading-tight">
                             {data.recipe.name}
                         </h2>
                     </div>

@@ -10,7 +10,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
         <div className="space-y-8 animate-fade-in-up">
             {/* Header Info */}
             <div className="border-b border-patisserie-gold/20 pb-6">
-                <h3 className="font-display text-2xl text-patisserie-gold mb-2">コンセプト</h3>
+                <h3 className="font-display text-2xl text-patisserie-gold mb-2">作品コンセプト</h3>
                 <p className="font-serif text-lg italic text-patisserie-cream/90 leading-relaxed">
                     "{recipe.description}"
                 </p>
@@ -22,11 +22,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
             {/* Financials */}
             <div className="grid grid-cols-2 gap-4">
                 <div className="glass-panel p-4 rounded-lg text-center">
-                    <p className="text-xs uppercase tracking-widest text-patisserie-cream/60 mb-1">原価</p>
+                    <p className="text-xs uppercase tracking-widest text-patisserie-cream/60 mb-1">推定原価</p>
                     <p className="font-display text-xl text-white">{recipe.costPrice}</p>
                 </div>
                 <div className="glass-panel p-4 rounded-lg text-center border-patisserie-gold">
-                    <p className="text-xs uppercase tracking-widest text-patisserie-gold mb-1">売価</p>
+                    <p className="text-xs uppercase tracking-widest text-patisserie-gold mb-1">推奨価格</p>
                     <p className="font-display text-xl text-patisserie-gold">{recipe.sellingPrice}</p>
                 </div>
             </div>
