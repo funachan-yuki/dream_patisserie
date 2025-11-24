@@ -8,37 +8,67 @@ interface ShowcaseProps {
 
 export const Showcase: React.FC<ShowcaseProps> = ({ data }) => {
     return (
-        <div className="w-full max-w-6xl mx-auto glass-panel rounded-xl overflow-hidden shadow-2xl relative animate-fade-in">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-patisserie-gold to-transparent opacity-50"></div>
+        <div className="w-full max-w-7xl mx-auto animate-fade-in pb-20">
             
-            <div className="grid lg:grid-cols-2 gap-0">
-                {/* Left: Image */}
-                <div className="relative h-96 lg:h-auto min-h-[500px] overflow-hidden group">
-                     {data.imageUrl ? (
-                        <div 
-                            className="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-                            style={{ backgroundImage: `url(${data.imageUrl})` }}
-                        />
-                    ) : (
-                        <div className="w-full h-full bg-patisserie-charcoal flex items-center justify-center">
-                            <div className="text-center">
-                                <div className="loader ease-linear rounded-full border-2 border-t-2 border-patisserie-gold h-8 w-8 mx-auto mb-4"></div>
-                                <span className="text-patisserie-gold animate-pulse font-display text-sm tracking-widest">お皿に盛り付け中...</span>
+            {/* Main Visual Panel */}
+            <div className="glass-panel border-0 border-t border-patisserie-gold/30 relative overflow-hidden mb-12">
+                <div className="grid lg:grid-cols-5 min-h-[600px]">
+                    
+                    {/* Image Section (Takes up 3/5 on large screens) */}
+                    <div className="lg:col-span-3 relative overflow-hidden min-h-[400px] lg:min-h-full border-b lg:border-b-0 lg:border-r border-patisserie-gold/20">
+                        {data.imageUrl ? (
+                            <div className="w-full h-full relative group">
+                                <div 
+                                    className="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+                                    style={{ backgroundImage: `url(${data.imageUrl})` }}
+                                />
+                                {/* Vignette Overlay */}
+                                <div className="absolute inset-0 bg-radial-gradient from-transparent to-patisserie-dark/60"></div>
+                                
+                                {/* Text Overlay on Image */}
+                                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-patisserie-dark via-patisserie-dark/80 to-transparent">
+                                    <h1 className="font-display text-4xl md:text-6xl text-white mb-2 drop-shadow-2xl tracking-tight leading-none">
+                                        {data.recipe.name}
+                                    </h1>
+                                    <div className="w-20 h-1 bg-patisserie-gold mt-4"></div>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="w-full h-full bg-patisserie-charcoal flex flex-col items-center justify-center p-8">
+                                <div className="loader mb-6"></div>
+                                <span className="font-display text-patisserie-gold/80 tracking-[0.2em] animate-pulse">PLATING...</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Intro/Flavor Text Section (2/5) */}
+                    <div className="lg:col-span-2 bg-patisserie-dark/80 p-8 md:p-12 flex flex-col justify-center relative">
+                        {/* Decorative Background Icon */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[200px] opacity-[0.03] text-patisserie-gold pointer-events-none font-display">
+                            &
+                        </div>
+
+                        <div className="relative z-10 text-center lg:text-left space-y-6">
+                            <span className="font-script text-4xl text-patisserie-gold/60">Chef's Creation</span>
+                            <p className="font-serif text-patisserie-cream/80 leading-loose text-lg">
+                                {data.recipe.description.split('。')[0]}。
+                            </p>
+                            <div className="pt-8 flex justify-center lg:justify-start">
+                                <div className="w-px h-16 bg-gradient-to-b from-patisserie-gold to-transparent"></div>
                             </div>
                         </div>
-                    )}
-                    
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8">
-                        <h2 className="text-3xl md:text-5xl font-display text-white mb-2 drop-shadow-lg leading-tight">
-                            {data.recipe.name}
-                        </h2>
                     </div>
                 </div>
+            </div>
 
-                {/* Right: Content */}
-                <div className="p-8 lg:p-12 overflow-y-auto max-h-[800px] scrollbar-hide bg-patisserie-dark/95">
-                    <RecipeCard recipe={data.recipe} />
-                </div>
+            {/* Detailed Recipe Scroll */}
+            <div className="max-w-5xl mx-auto px-4 md:px-8">
+                <RecipeCard recipe={data.recipe} />
+            </div>
+
+            {/* Signature Footer */}
+            <div className="mt-20 text-center opacity-40">
+                <span className="font-script text-5xl text-white">Bon Appétit</span>
             </div>
         </div>
     );

@@ -1,8 +1,13 @@
+export interface RecipeStep {
+    instruction: string;
+    visualDescription: string;
+}
+
 export interface SweetRecipe {
     name: string;
     description: string;
     ingredients: string[];
-    steps: string[];
+    steps: RecipeStep[];
     costPrice: string;
     sellingPrice: string;
     imagePrompt: string;
